@@ -1,16 +1,69 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+import discord
+from discord.ext import commands
+import random
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+client = commands.Bot(command_prefix = '.')
+
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
+
+@client.event
+async def on_ready():
+    print('bot is ready perfectly')
+
+
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'my ping is: {round(client.latency *1000)}ms')
+
+
+@client.command(aliases=['8ball', 'test'])
+async def _8ball(ctx, *, question):
+    responses = [
+    "It is certain",
+    "Without a doubt",
+    "You may rely on it",
+    "Yes definitely",
+    "It is decidedly so",
+    "As I see it, yes",
+    "Most likely",
+    "Yes",
+    "Outlook good",
+    "Signs point to yes",
+    "Reply hazy try again",
+    "Better not tell you now",
+    "Ask again later",
+    "Cannot predict now",
+    "Concentrate and ask again",
+    "Don't count on it",
+    "Outlook not so good",
+    "My sources say no",
+    "Very doubtful",
+    "My reply is no",
+    "putangina mo kase gago ka"]
+
+    await ctx.send(f'your Question: {question}\nAnswer: {random.choice(responses)}')
+
+
+
+
+
+client.run('NzYyNTgzMDkwMzMzMjIwODY0.X3rQ2A.WxbnlOdVbzPth4fuArsnOskXQPY')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
